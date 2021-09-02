@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Banco.Models
 {
-    class ClientModel 
+    class ClientModel : IClientable
     {
         public string Name { get; set; }
         public string Email { get; set; }

@@ -1,11 +1,12 @@
-﻿using Banco.Services;
+﻿using Banco.Interfaces;
+using Banco.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Banco.Models
 {
-    class WorkerModel
+    class WorkerModel: IWorkable
     {
         public string Name { get; set; }
 
