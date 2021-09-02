@@ -13,13 +13,13 @@ namespace Banco
             var notificationService = new NotificationService();
             var interestRateService = new InterestRateService();
 
-            ClientModel cliente1 = registerService.register("Juan", "juan@gmail.com", 20000);
-            ClientModel cliente2 = registerService.register("Ramon", "ramon@gmail.com", 8000);
+            ClientModel client1 = registerService.register("Juan", "juan@gmail.com", 20000);
+            ClientModel client2 = registerService.register("Ramon", "ramon@gmail.com", 8000);
 
-            WorkerModel trabajador = new WorkerModel();
+            WorkerModel worker = new WorkerModel();
 
-            cliente1.transfer(cliente2,100, transferService, notificationService);
-            trabajador.checkInterest(cliente1, interestRateService);
+            client1.transfer(client2,100, transferService, notificationService);
+            worker.checkInterest(client1, interestRateService);
         }
     }
 }
