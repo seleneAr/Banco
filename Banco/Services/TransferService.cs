@@ -18,7 +18,7 @@ namespace Banco.Services
         public bool transfer(ClientModel from, ClientModel to, decimal ammount, NotificationService notificationService)
         {
 
-            if(ammount > from.Account)
+            if(ammount > from.Account || ammount > 0)
             {
                 return false;
             }
