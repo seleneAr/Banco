@@ -16,6 +16,14 @@ namespace Banco.Models
 
         public WorkerModel Worker { get; set; } = null;
 
+        /// <summary>
+        /// Crear un usuario. El usuario puede ser cliente, trabajador, ambos o ninguno
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="email"></param>
+        /// <param name="emailService"></param>
+        /// <param name="client"></param>
+        /// <param name="worker"></param>
         public UserModel(string name, string email, EmailService emailService, ClientModel client, WorkerModel worker) {
             Name = name;
             Email = email;
@@ -24,7 +32,10 @@ namespace Banco.Models
             this.Register(emailService);
         }
 
-
+        /// <summary>
+        /// Enviar notificación de registro como usuario
+        /// </summary>
+        /// <param name="emailService">Servicio que realiza la notificacion</param>
         public void Register(EmailService emailService)
         {
             var welcomeEmail = new NotificationModel(Email, "Bienvenido al banco, esta es tu cuenta de usuario");

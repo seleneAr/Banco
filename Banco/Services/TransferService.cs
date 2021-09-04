@@ -9,7 +9,7 @@ namespace Banco.Services
     class TransferService : ITransferable
     {
         /// <summary>
-        /// Funcion que realiza una transferencia entre dos clientes
+        /// Realizar una transferencia entre dos clientes
         /// </summary>
         /// <param name="from"> Cliente que realiza transferencia </param>
         /// <param name="to"> Cliente que recibe la transferencia </param>

@@ -8,7 +8,11 @@ namespace Banco.Services
 {
     class InterestRateService : IRateable
     {
-       
+       /// <summary>
+       /// Calcular interés a cobrar a un usuario en funcion del dinero que tenga en su cuenta
+       /// </summary>
+       /// <param name="client">Cliente a calcular tasa de interes</param>
+       /// <returns></returns>
         public string CalculateInterestRate(ClientModel client)
         {
             var ammount = client.Account.Value;
