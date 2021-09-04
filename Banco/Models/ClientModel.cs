@@ -8,21 +8,19 @@ namespace Banco.Models
 {
     class ClientModel : IClientable
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public decimal Account { get; set; }
+        
+       public BankAccountModel Account { get; set; }
 
-
-        public ClientModel(string name, string email, decimal account)
+        public ClientModel(decimal account)
         {
-            Name = name;
-            Email = email;
-            Account = account;
+            Account = new BankAccountModel(account);
         }
 
-        public bool transfer(ClientModel to, decimal ammount, TransferService transferService, NotificationService notificationService)
+
+        public bool transfer(ClientModel to, decimal ammount, TransferService transferService, SMService smsService)
         {
-            return transferService.transfer(this, to, ammount, notificationService);
+           
+            return transferService.transfer(this, to, ammount, smsService);
         }
     }
 }

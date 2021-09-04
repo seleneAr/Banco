@@ -15,23 +15,23 @@ namespace Banco.Services
         /// <param name="to"> Cliente que recibe la transferencia </param>
         /// <param name="ammount"> Cantidad de la transferencia </param>
         /// <returns> Devuelve true/false en función si se ha podido realizar la transferencia </returns>
-        public bool transfer(ClientModel from, ClientModel to, decimal ammount, NotificationService notificationService)
+        public bool transfer(ClientModel from, ClientModel to, decimal ammount, SMService smsService)
         {
 
-            if(ammount > from.Account || ammount > 0)
+            if (ammount > from.Account.Value || ammount < 0)
             {
                 return false;
             }
 
-            from.Account -= ammount;
-            to.Account += ammount;
+            from.Account.Value -= ammount;
+            to.Account.Value += ammount;
 
-
-            SMSMessageModel notificationSender = new SMSMessageModel("Transferencia enviada", "Transferencia enviada a " + to.Name + " con valor de " + ammount + " saldo actual: "+ from.Account);
-            SMSMessageModel notificationReceiver = new SMSMessageModel("Transferencia recibida", "Transferencia recibida de " + from.Name + " con valor de " + ammount + " saldo actual: " + to.Account);
+            NotificationModel notificationSender = new NotificationModel($"Nº de cuenta {to.Account.Iban}", $"Transferencia enviada  con valor de  {ammount} saldo actual:  {from.Account.Value} ");
+          
+            NotificationModel notificationReceiver = new NotificationModel($"Nº de cuenta {from.Account.Iban}", $"Transferencia recibida con valor de { ammount} saldo actual:  { to.Account.Value}");
             
-            notificationService.sendSMS(notificationSender);
-            notificationService.sendSMS(notificationReceiver);
+            smsService.send(notificationSender);
+            smsService.send(notificationReceiver);
 
 
             return true;

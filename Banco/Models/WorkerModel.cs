@@ -8,19 +8,17 @@ namespace Banco.Models
 {
     class WorkerModel: IWorkable
     {
-        public string Name { get; set; }
+        public string WorkerID { get; set; }
 
-        public ClientModel Client { get; set;  }
-        
+     
         public string checkInterest(ClientModel client, InterestRateService interestRateService)
         {
             return interestRateService.CalculateInterestRate(client);
         }
 
-        public WorkerModel(string name, ClientModel client)
+        public WorkerModel()
         {
-            Name = name;
-            Client = client;
+            WorkerID = Guid.NewGuid().ToString().Substring(0,5);
         }
 
     }

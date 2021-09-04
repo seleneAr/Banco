@@ -7,7 +7,6 @@ namespace Banco.Interfaces
 {
     interface INotificable
     {
-        void sendSMS(SMSMessageModel message);
-        void sendEmail(EmailMessageModel message);
+        void send(NotificationModel notification);
     }
 }

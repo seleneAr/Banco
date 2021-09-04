@@ -8,6 +8,6 @@ namespace Banco.Interfaces
 {
     interface ITransferable
     {
-        bool transfer(ClientModel from, ClientModel to, decimal ammount, NotificationService notificationService);
+        bool transfer(ClientModel from, ClientModel to, decimal ammount, SMService smsService);
     }
 }

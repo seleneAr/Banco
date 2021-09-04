@@ -11,17 +11,18 @@ namespace Banco.Services
        
         public string CalculateInterestRate(ClientModel client)
         {
-            var ammount = client.Account;
+            var ammount = client.Account.Value;
+            var iban = client.Account.Iban;
            if(ammount < 10000)
             {
-                return "Interés de " + client.Name+ " : 5%";
+                return "Interés de cuenta nº" + iban + " : 5%";
             }else if(ammount >= 10000 && ammount < 20000)
             {
-                return "Interés de " + client.Name + " : 3%";
+                return "Interés de cuenta nº" + iban + " : 3%";
             }
             else
             {
-                return "Interés de " + client.Name + " : 2%";
+                return "Interés de cuenta nº" + iban + " : 2%";
             }
         }
     }

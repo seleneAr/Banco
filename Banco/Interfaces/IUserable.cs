@@ -6,8 +6,8 @@ using System.Text;
 
 namespace Banco.Interfaces
 {
-    interface IRegistrable
+    interface IUserable
     {
-        public ClientModel register(string name, string email, decimal account, NotificationService notificationService);
+        public void Register(EmailService emailService);
     }
 }
